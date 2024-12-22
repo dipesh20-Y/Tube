@@ -1,0 +1,15 @@
+{
+  "name": "ytbackend",
+  "version": "1.0.0",
+  "description": "a youtube like backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "javascript"
+  ],
+  "author": "Dipesh Adhikari",
+  "license": "ISC"
+}
