@@ -58,8 +58,7 @@ web_modules/
 
 # dotenv Environment Files (Keep .env.sample tracked)
 .env
-.env.*
-!.env.sample
+
 
 # Parcel Cache
 .cache/
