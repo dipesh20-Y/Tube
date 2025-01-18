@@ -175,8 +175,11 @@ const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
-      $set: {
-        refreshToken: undefined,
+      // $set: {
+      //   refreshToken: undefined,
+      // },
+      $unset: {
+        refreshToken: 1,
       },
     },
     {
@@ -247,7 +250,7 @@ const changePassword = asyncHandler(async (req, res) => {
 
   const user = await User.findById(req.user?._id);
 
-  const isPasswordCorrect = await User.comparePassword(oldPassword);
+  const isPasswordCorrect = await user.comparePassword(oldPassword);
 
   if (!isPasswordCorrect) {
     throw new ApiError(400, "Incorrect Password");
@@ -405,11 +408,11 @@ const getChannelProfile = asyncHandler(async (req, res) => {
     },
   ]);
 
-  // console.log(channel)
+  console.log(channel);
   if (!channel?.length) {
     throw new ApiError(404, "Channel does not exist");
   }
-  return rescondition
+  return res
     .status(200)
     .json(
       new ApiResponse(200, channel[0], "user channel fetched successfully")
